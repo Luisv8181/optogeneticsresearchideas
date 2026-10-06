@@ -8,11 +8,13 @@ Status: **verified**, **corrected**, or **unconfirmed**. Build only on verified/
   engineering enables minimally invasive optogenetics," *Nature Methods* 16:1176–1184 (2019).
 - Gaussian-process models trained on **102 functionally characterized ChR variants**;
   produced ChRger1/2/3. ✓
-- **Deferred to M1:** repo-internal specifics quoted in earlier notes (154 records,
-  341 alignment positions, 30 held-out generation-10 variants, reported R values
-  0.927/0.964/0.959). These describe the *repository contents*, not the paper, and will
-  be confirmed by inspecting the `channels` repo directly during M1. Do not cite them as
-  verified yet.
+- **Repo-internal numbers — ✅ CONFIRMED (M1, 2026-10-06)** by inspecting
+  `fhalab/channels` directly: `Ephys_data_formatted.csv` has **154 rows**, `seq` is a
+  **341-char** aligned sequence, and **gen10 = 30** held-out variants (gen1=76, gen2=5,
+  gen4=12, gen5=5, gen7=4, gen9=22). Phenotype columns: `max_peak`, `max_ss`,
+  `green_norm`, `kinetics_off`. See `data/SOURCES.md`.
+- **Still deferred to M2:** the reported R values (0.927/0.964/0.959) — those require
+  *running* the model, not reading the repo, and are the trust check for M2.
 
 ## 2. ChrimsonR E300 / PLM study — ⚠️ CORRECTED (preprint, not journal)
 - **Samuel Ehrlich et al.** (incl. Edward S. Boyden, Craig R. Forest), "Mutation E300
@@ -57,9 +59,17 @@ Status: **verified**, **corrected**, or **unconfirmed**. Build only on verified/
   schizophrenia/autism." Not corroborated by the paper; treated as a search-engine
   fabrication and **excluded**.
 
-## 5. 2017 ML membrane-localization (~218 chimeras) — ❓ UNVERIFIED
-- Appears only in narrative framing, nothing is built on it. Likely Bedbrook et al. 2017
-  (PLOS Comput. Biol.). Verify before using the "~218 chimeras" figure in any writeup.
+## 5. 2017 ML membrane-localization — ✅ VERIFIED
+- Bedbrook et al., "Machine learning to design integral membrane channelrhodopsins for
+  efficient eukaryotic expression and plasma membrane localization," *PLOS Comput. Biol.*
+  (2017, PMC5695628). GP classification/regression on **218 ChR chimeras** chosen from a
+  **118,098-variant** SCHEMA-recombination library of **3 parent ChRs**, for expression +
+  membrane localization. Confirms the "~218 chimeras / 3 parents" narrative figure.
+
+## 6. 2019 paper author list — note
+- Full bioRxiv author list: Bedbrook, C. N.; Yang, K. K.; **Robinson, J. E.**; Gradinaru,
+  V.; Arnold, F. H. (earlier notes omitted Robinson). Published *Nat. Methods* 2019,
+  DOI 10.1038/s41592-019-0583-8.
 
 ## Net effect on the project
 - Journal attributions were wrong in two places (ChrimsonR = preprint; VPOD-v1.3 claim =
