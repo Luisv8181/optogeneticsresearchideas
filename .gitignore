@@ -1,0 +1,18 @@
+# Raw downloaded data is untrusted input and often large / licensed — keep provenance
+# notes and processed outputs, never the raw dumps.
+data/raw/
+data/processed/
+*.parquet
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Model artifacts / embeddings caches
+*.pt
+embeddings/

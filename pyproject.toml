@@ -1,0 +1,25 @@
+[project]
+name = "optobench"
+version = "0.0.1"
+description = "Translation-aware benchmark for optogenetic-protein phenotype prediction"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy",
+    "pandas",
+]
+
+# Heavier, stage-specific deps kept optional so the schema/data work needs no GPU stack.
+[project.optional-dependencies]
+baseline = ["scikit-learn", "GPy"]      # M2: reproduce the 2019 GP (pin versions on first run)
+plm = ["torch", "fair-esm"]             # M3: ESM-2 embeddings (CPU-ok for ~1.7k seqs, slow)
+dev = ["pytest", "ruff"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/optobench"]
+
+[tool.ruff]
+line-length = 99
