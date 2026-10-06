@@ -1,0 +1,9 @@
+variant,mutation,property,value,unit,wavelength_nm,ec50_mW_575nm,tau_off_s,assay,n,completeness,source,citation
+WT_ChrimsonR,none,sustained_photocurrent,66,pA,635,0.19,0.06,whole_cell_patch_clamp,6,quantified,ehrlich2026,bioRxiv 10.64898/2026.05.13.725064
+E300G,E300G,sustained_photocurrent,305,pA,635,0.07,0.19,whole_cell_patch_clamp,6,quantified,ehrlich2026,bioRxiv 10.64898/2026.05.13.725064
+E300P,E300P,sustained_photocurrent,255,pA,635,0.07,0.40,whole_cell_patch_clamp,6,quantified,ehrlich2026,bioRxiv 10.64898/2026.05.13.725064
+E300V,E300V,sustained_photocurrent,,pA,635,,0.22,whole_cell_patch_clamp,6,partial_maintained,ehrlich2026,bioRxiv 10.64898/2026.05.13.725064
+H291Y,H291Y,sustained_photocurrent,20,pA,635,,,whole_cell_patch_clamp,6,partial_lt20pA_blueshifted,ehrlich2026,bioRxiv 10.64898/2026.05.13.725064
+E132A,E132A,sustained_photocurrent,,pA,635,,,whole_cell_patch_clamp,6,named_maintained_unquantified,ehrlich2026,bioRxiv 10.64898/2026.05.13.725064
+H307L,H307L,sustained_photocurrent,,pA,635,,,whole_cell_patch_clamp,6,named_maintained_unquantified,ehrlich2026,bioRxiv 10.64898/2026.05.13.725064
+F341E,F341E,sustained_photocurrent,,pA,635,,,whole_cell_patch_clamp,6,named_maintained_unquantified,ehrlich2026,bioRxiv 10.64898/2026.05.13.725064

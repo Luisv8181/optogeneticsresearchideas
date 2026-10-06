@@ -7,8 +7,12 @@
   consortium) and rejected one fabricated claim. One figure (VPOD v1.3 count) left
   unconfirmed, flagged. Repo-internal 2019 metrics deferred to M1 (confirmed by
   inspecting the repo, not the paper).
-- **M1 — Unified dataset.** Acquire sources, implement the schema, build the merged view,
-  document merge hazards encountered. (This doc + `01`/`02`.)
+- **M1 — Unified dataset.** 🔶 **In progress.** Sources acquired: Arnold `channels`
+  (154 ChR records, verified) and VPOD v1.3 (1,211 genotypes, verified — see
+  `data/SOURCES.md`). Ehrlich preprint partially transcribed (7 of 17 variants;
+  `data/curated/`). **Remaining:** finish the 17-variant transcription from the
+  supplement, implement `Dataset.view()`, build + commit the merged view, document
+  merge hazards hit in practice.
 - **M2 — Reproduce Baseline A.** Pinned environment; reproduce the 2019 GP's reported
   CV and generation-10 test metrics within tolerance. This is a trust check on our whole
   pipeline, not just a baseline.

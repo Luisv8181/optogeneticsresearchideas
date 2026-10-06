@@ -35,7 +35,11 @@ was pulled, from where, and when. Regenerate raw data from here.
     wild-type-vs-mutant splits.
 - **License:** LICENSE.txt retained in `data/raw/vpod/`.
 
-## ehrlich2026 — ☐ not yet acquired
+## ehrlich2026 — ⚠️ partially acquired 2026-10-06 (7 of 17 variants)
 - **bioRxiv preprint**, DOI 10.64898/2026.05.13.725064 (unrefereed).
-- 17 ChrimsonR variants to be transcribed by hand from the preprint's supplement into
-  the measurement schema (`source=ehrlich2026`). Small n; one careful transcription pass.
+- Transcribed → `data/curated/ehrlich2026_chrimsonr.csv` (committed, not raw).
+- Only the variants named/quantified in the main text are captured (WT, E300G/P/V,
+  H291Y, E132A, H307L, F341E). The full 17-variant list is in a supplementary table not
+  web-fetchable; the remaining ~10 loss/reduced-function variants are **not** transcribed
+  (identities not in fetchable text — will not be invented). Complete from the supplement
+  PDF. See `data/curated/README.md`.
