@@ -4,21 +4,24 @@
 > we are claiming is novel* and *where the genuine research gap is*, before any
 > modeling.
 >
-> **Provenance caveat:** the literature claims below are drawn from working notes and
-> a collaborator's summary of the 2025 roadmap paper. They have **not yet been
-> independently verified in this project** (see Milestone 0 in `03_benchmark_plan.md`).
-> Treat every cited number and author claim as *to-be-confirmed* until that milestone
-> is done. Getting a citation wrong in a publishable program is expensive, so we verify
-> before we build on it.
+> **Provenance:** M0 verification is **done** — see `VERIFICATION.md` for the per-claim
+> record. It corrected three attributions that earlier notes got wrong (the ChrimsonR
+> study is a **bioRxiv preprint**, not a *Scientific Reports* paper; the VPOD-v1.3 /
+> physicochemical-vs-PLM result is **Frazer et al. 2026, *Molecular Biology and
+> Evolution***, not *Scientific Reports*; the roadmap is a large consortium, not
+> Deisseroth-led) and rejected one fabricated claim. The table below reflects the
+> corrected, verified state. One figure (VPOD v1.3's exact genotype count) remains
+> **unconfirmed** and is flagged as such.
 
 ## The three sources and what each one contributes
 
 | Source | Year | What it gives us | Role in this project |
 |---|---|---|---|
-| Arnold Lab `channels` (Bedbrook et al.) | 2019 | Gaussian-process model, ~102–154 characterized ChRs, sequence+structural-contact encoding, generation-based split | **Baseline A** + the historical anchor |
-| VPOD opsin database | 2024/25 | ~1,700 opsin genotypes with λmax | Spectral-phenotype data for cross-family generalization |
-| ESM / ChrimsonR study (Ehrlich et al.) | 2026 | zero-shot PLM mutation recommendations, 17 experimentally-tested ChrimsonR variants | **Temporal OOD test set** + evidence PLMs transfer to opsins |
-| Translation roadmap (Nat. Neurosci. Perspective) | 2025 | the clinical constraints that *define what "better" means* | **The objective function**, not a dataset |
+| Bedbrook, Yang & Arnold, *Nat. Methods* | 2019 | Gaussian-process model, 102 characterized ChRs, sequence+structural-contact encoding, generation-based split | **Baseline A** + the historical anchor |
+| VPOD v1.0 — Frazer et al., *GigaScience* | 2024 | 864 opsin genotypes / 73 pubs with λmax | Spectral-phenotype data for cross-family generalization |
+| VPOD v1.3 — Frazer et al., *Mol. Biol. Evol.* | 2026 | physicochemical encoding ≥ ESM-2 on λmax; v1.3 release (count TBC) | Evidence Baseline B is **not** a strawman |
+| ChrimsonR E300 — Ehrlich et al., **bioRxiv preprint** | 2026 | zero-shot ESM-1b/1v, 17 experimentally-tested ChrimsonR variants (n=6) | **Temporal OOD test set** + evidence PLMs transfer to opsins *(unrefereed)* |
+| Translation roadmap — *Nat. Neurosci.* Perspective (consortium) | 2025 | the clinical constraints that *define what "better" means* | **The objective function**, not a dataset |
 
 ## The reframing
 

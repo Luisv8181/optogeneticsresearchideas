@@ -2,9 +2,11 @@
 
 ## Milestones (sequential — "both, in order")
 
-- **M0 — Verify the literature.** Independently confirm each cited claim (Ehrlich et al.
-  variants & numbers, VPOD v1.3 size, 2019 reported metrics, the 2025 roadmap's authors
-  and claims). Correct `00_research_framework.md`. *Do this before building on any number.*
+- **M0 — Verify the literature.** ✅ **Done 2026-10-06** — see `VERIFICATION.md`.
+  Corrected three attributions (ChrimsonR = preprint; VPOD v1.3 = *MBE* 2026; roadmap =
+  consortium) and rejected one fabricated claim. One figure (VPOD v1.3 count) left
+  unconfirmed, flagged. Repo-internal 2019 metrics deferred to M1 (confirmed by
+  inspecting the repo, not the paper).
 - **M1 — Unified dataset.** Acquire sources, implement the schema, build the merged view,
   document merge hazards encountered. (This doc + `01`/`02`.)
 - **M2 — Reproduce Baseline A.** Pinned environment; reproduce the 2019 GP's reported

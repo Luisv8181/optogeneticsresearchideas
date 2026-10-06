@@ -16,13 +16,17 @@
 - **Risk:** 2019-era dependency pins (GPy / old sklearn). Baseline reproduction is its
   own milestone, not an afternoon.
 
-### 2. VPOD v1.3 (spectral phenotype, cross-family)
-- Public opsin genotype→λmax database.
-- Record the exact version (v1.3) and release.
+### 2. VPOD (spectral phenotype, cross-family)
+- Public opsin genotype→λmax database (GitHub: VisualPhysiologyDB). Two papers back it:
+  v1.0 (Frazer et al., *GigaScience* 2024; 864 genotypes / 73 pubs) and v1.3 (Frazer
+  et al., *Mol. Biol. Evol.* 2026). Pull **v1.3**; read its exact genotype count off the
+  release (the "1,714 / 120+ pubs" figure is unconfirmed — see `VERIFICATION.md`).
 - Normalize λmax units on ingest; retain raw.
 
-### 3. Ehrlich et al. 2026 (temporal OOD test set)
-- 17 ChrimsonR variants from the paper's supplement — **manual transcription**, small n.
+### 3. Ehrlich et al. 2026 — bioRxiv **preprint** (temporal OOD test set)
+- DOI 10.64898/2026.05.13.725064. Unrefereed — label as preprint; re-check for a
+  peer-reviewed version before publication.
+- 17 ChrimsonR variants from the preprint's supplement — **manual transcription**, small n.
 - Capture: variant id, mutation(s), measured property, value, wavelength, intensity, n,
   assay. These become the held-out temporal test set (`source=ehrlich2026`).
 
