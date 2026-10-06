@@ -42,9 +42,14 @@ Status: **verified**, **corrected**, or **unconfirmed**. Build only on verified/
   "similar to, but in all cases slightly worse than" optimized physicochemical-property
   encoding, which it keeps for interpretability. ✓ (This *strengthens* our "PLMs are not
   automatically superior" framing.)
-- **UNCONFIRMED:** the specific "**1,714 genotypes / 120+ publications**" count for v1.3.
-  The v1.3 label and journal are confirmed; the exact counts are not — treat as
-  approximate until read off the v1.3 release directly in M1.
+- **CORRECTED (M1, 2026-10-06):** the "**1,714 genotypes**" figure is **wrong**. The
+  actual VPOD v1.3 whole dataset is **1,211 unique genotypes** — confirmed two ways from
+  the release (`wds_meta.tsv` = 1,211 rows; `wds_aligned_VPOD_1.3_het.fasta` = 1,211
+  sequences; commit c2912f8). Subsets partition consistently: vertebrate 1,057 +
+  invertebrate 155; wild-type 364 + mutant 848. Columns: `Seq_Id, Lambda_Max, Species,
+  Opsin_Family, Phylum, Class, Accession, Mutations, Protein, RefId` — `Phylum`/`Class`
+  give the phylogenetic split directly. (The "120+ publications" count was not checked;
+  the genotype figure is the one that mattered and it was off by ~500.)
 
 ## 4. 2025 translation roadmap — ⚠️ CORRECTED (author list) + ❌ one claim rejected
 - "Roadmap for direct and indirect translation of optogenetics into discoveries and

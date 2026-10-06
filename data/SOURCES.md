@@ -19,11 +19,21 @@ was pulled, from where, and when. Regenerate raw data from here.
   relying on structural-contact features in M2.
 - **License:** confirm from repo before any redistribution.
 
-## vpod — ⏳ acquiring 2026-10-06
+## vpod — ✅ acquired 2026-10-06 (trimmed to v1.3)
 - **Repo:** https://github.com/VisualPhysiologyDB/visual-physiology-opsin-db
-- First shallow clone was interrupted; re-cloning full. Fill in commit + exact v1.3
-  genotype count here once the checkout completes (this resolves the one UNCONFIRMED
-  figure from VERIFICATION.md).
+- **Commit:** `c2912f843b0dc520f7f8631d025d00c8c601fd6b` (see `vpod/CLONE_COMMIT.txt`)
+- **Disk note:** full checkout is **~20 GB / 30k files** (bloated history; `--filter=blob:none`
+  does not help once the working tree is written). We extracted only `vpod_data/VPOD_1.3/`
+  (30 MB) plus README/AUTHORS/LICENSE and **deleted the full clone** to reclaim disk. To
+  re-acquire, clone and keep only `vpod_data/VPOD_1.3/`.
+- **v1.3 whole dataset: 1,211 unique genotypes** (NOT 1,714 — see VERIFICATION.md §3).
+  - whole-dataset files: `.../vpod_1.3_data_splits_2025-10-06_16-50-06/wds_meta.tsv`
+    (+ `wds_aligned_VPOD_1.3_het.fasta`), 1,211 rows/seqs.
+  - columns: `Seq_Id, Lambda_Max, Species, Opsin_Family, Phylum, Class, Accession,
+    Mutations, Protein, RefId`.
+  - subsets: vert 1,057 / inv 155; wt 364 / mut 848 — ready-made phylogenetic &
+    wild-type-vs-mutant splits.
+- **License:** LICENSE.txt retained in `data/raw/vpod/`.
 
 ## ehrlich2026 — ☐ not yet acquired
 - **bioRxiv preprint**, DOI 10.64898/2026.05.13.725064 (unrefereed).
