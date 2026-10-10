@@ -42,9 +42,16 @@ class Property(str, Enum):
     FUNCTIONAL = "functional"
 
 
-@dataclass(frozen=True)
+@dataclass
 class Protein:
-    """Identity of a protein. One row per distinct genotype."""
+    """Identity of a protein. One row per distinct genotype.
+
+    `sequence` may be empty when only a mutation string is known relative to a reference
+    whose sequence we do not yet hold (e.g. the Ehrlich ChrimsonR variants) — such a
+    protein is carried but excluded from sequence-model views until reconstructed.
+    `meta` holds source-specific fields that do not belong in the core schema
+    (species, opsin family, phylum, class, accession) and that drive splits.
+    """
 
     protein_id: str
     sequence: str
@@ -56,6 +63,7 @@ class Protein:
     reference_protein: str | None = None
     generation: int | None = None
     structure_ref: str | None = None
+    meta: dict = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -111,3 +119,55 @@ class Dataset:
                 f"protein {m.protein_id!r}"
             )
         self.measurements.append(m)
+
+    def to_frame(self):
+        """Tidy long DataFrame: one row per measurement, joined to its protein fields."""
+        import pandas as pd
+
+        rows = []
+        for m in self.measurements:
+            p = self.proteins[m.protein_id]
+            rows.append(
+                {
+                    "protein_id": p.protein_id,
+                    "family": p.family.value,
+                    "generation": p.generation,
+                    "has_sequence": bool(p.sequence),
+                    "sequence": p.sequence,
+                    "aligned_sequence": p.aligned_sequence,
+                    "mutations": ";".join(p.mutations),
+                    "property": m.property.value,
+                    "value": m.value,
+                    "unit": m.unit,
+                    "wavelength_nm": m.wavelength_nm,
+                    "assay_system": m.assay_system,
+                    "n": m.n,
+                    "source": m.source.value,
+                    "phylum": p.meta.get("phylum"),
+                    "taxon_class": p.meta.get("class"),
+                    "opsin_family": p.meta.get("opsin_family"),
+                    "species": p.meta.get("species"),
+                    "citation": m.citation,
+                }
+            )
+        return pd.DataFrame(rows)
+
+    def view(self, property=None, source=None, require_sequence=True):
+        """Model-ready view: filter the tidy frame to one property/source regime.
+
+        An explicit, auditable step — never a silent average across conditions.
+        `require_sequence=True` drops proteins carried without a sequence (the Ehrlich
+        variants until their ChrimsonR sequence is reconstructed).
+        """
+        df = self.to_frame()
+        if df.empty:
+            return df
+        if property is not None:
+            prop = property.value if isinstance(property, Property) else property
+            df = df[df["property"] == prop]
+        if source is not None:
+            src = source.value if isinstance(source, Source) else source
+            df = df[df["source"] == src]
+        if require_sequence:
+            df = df[df["has_sequence"]]
+        return df.reset_index(drop=True)

@@ -74,3 +74,24 @@ physics stays separate from the data:
 3. **The 17 Ehrlich variants are hand-extracted from a supplement** — transcribe once,
    carefully, and mark `source=ehrlich2026` so they can be held out cleanly as the
    temporal test set.
+
+### Hazards actually hit during the M1 merge (resolved)
+
+- **VPOD `Seq_Id` is NOT a safe join key.** IDs collide across the subset files
+  (`vert_meta`/`inv_meta`), so labeling family by subset membership silently mislabeled
+  every invertebrate as vertebrate. **Fix:** derive family from the `Phylum` column
+  (Chordata → vertebrate; Arthropoda/Mollusca/Annelida → invertebrate; Streptophyta →
+  other). Verified counts: 1,057 / 148 / 6. (`ingest._vpod_family`, `tests/test_merge.py`.)
+- **The Ehrlich variants have no sequence**, only mutation strings relative to ChrimsonR
+  WT, which is not in any source we hold. They are carried with `sequence=""` and
+  **excluded from sequence-model views** (`Dataset.view(require_sequence=True)`) until the
+  ChrimsonR WT sequence is added and the mutations applied. 8 proteins affected.
+- **Real missingness in the ChR set:** `green_norm` and `kinetics_off` are present for
+  only 128/154 records. No imputation — a `Measurement` is emitted only where the value
+  exists, so the counts are 154/154/128/128.
+- **Plant opsins exist in VPOD** (6 Streptophyta). They are opsins but not animal, so
+  they are `other`, not a phylogenetic-split target — don't let them leak into a
+  vertebrate/invertebrate contrast.
+
+Merged totals: **1,373 proteins, 1,786 measurements** → `data/processed/measurements.csv`
+(regenerate with `python scripts/build_dataset.py`).

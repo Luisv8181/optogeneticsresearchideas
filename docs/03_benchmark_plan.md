@@ -7,12 +7,13 @@
   consortium) and rejected one fabricated claim. One figure (VPOD v1.3 count) left
   unconfirmed, flagged. Repo-internal 2019 metrics deferred to M1 (confirmed by
   inspecting the repo, not the paper).
-- **M1 — Unified dataset.** 🔶 **In progress.** Sources acquired: Arnold `channels`
-  (154 ChR records, verified) and VPOD v1.3 (1,211 genotypes, verified — see
-  `data/SOURCES.md`). Ehrlich preprint partially transcribed (7 of 17 variants;
-  `data/curated/`). **Remaining:** finish the 17-variant transcription from the
-  supplement, implement `Dataset.view()`, build + commit the merged view, document
-  merge hazards hit in practice.
+- **M1 — Unified dataset.** ✅ **Done** (one data gap flagged). Merged Arnold `channels`
+  (154 ChR), VPOD v1.3 (1,211 opsins), and the curated Ehrlich variants into **1,373
+  proteins / 1,786 measurements** (`data/processed/measurements.csv`, built by
+  `scripts/build_dataset.py`, locked by `tests/test_merge.py`). `Dataset.view()`
+  implemented; merge hazards hit and resolved are documented in `01_data_schema.md`.
+  **Open gap:** Ehrlich variants have no sequence yet (excluded from sequence views until
+  ChrimsonR WT is added) and only 7 of 17 are transcribed — neither blocks M2.
 - **M2 — Reproduce Baseline A.** Pinned environment; reproduce the 2019 GP's reported
   CV and generation-10 test metrics within tolerance. This is a trust check on our whole
   pipeline, not just a baseline.
